@@ -1,6 +1,5 @@
 import EventCard from '@/components/eventCard';
 
-
 async function getData(category) {
   const res = await fetch('http://localhost:3000/api/events/allevents', {
     method: 'POST',

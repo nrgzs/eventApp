@@ -1,4 +1,4 @@
-import EventCard from "@/components/eventCard";
+import EventCard from '@/components/eventCard';
 
 async function getData() {
   const res = await fetch('http://localhost:3000/api/events/allevents', {
@@ -7,6 +7,7 @@ async function getData() {
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
+    
     throw new Error('Failed to fetch data');
   }
 
@@ -14,7 +15,7 @@ async function getData() {
 }
 
 export default async function EventsPage() {
-const data = await getData()
+  const data = await getData();
   return (
     <div className="minh-[85vh] flex-col flex items-center ">
       <h2 className="text-2xl font-bold mb-4">All Events</h2>

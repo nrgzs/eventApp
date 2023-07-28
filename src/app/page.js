@@ -19,9 +19,8 @@ export default async function Home() {
   console.log(data);
   return (
     <div className="minh-[85vh] flex-col flex items-center ">
-      
       {data.map((d) => {
-        return <CategoryCard key={d.id} event={d}/>;
+        return <CategoryCard key={d.id} event={d} />;
       })}
     </div>
   );

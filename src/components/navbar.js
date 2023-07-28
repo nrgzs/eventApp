@@ -12,9 +12,9 @@ export default function Navbar() {
         <Link href={'/events'}>
           <li  className="hover:text-cyan-500 border-r-2 pr-4">All Events</li>
         </Link>
-        <Link href={'/about'}>
+        {/* <Link href={'/about'}>
           <li className="hover:text-cyan-500">About Us</li>
-        </Link>
+        </Link> */}
       </ul>
     </div>
   );
