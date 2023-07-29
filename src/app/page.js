@@ -1,5 +1,6 @@
 import CategoryCard from '@/components/categoryCard';
 import Image from 'next/image';
+import { FetchDataError } from './lib/exceptions';
 
 async function getData() {
   const res = await fetch('http://localhost:3000/api/events/categories', {
@@ -8,7 +9,7 @@ async function getData() {
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data');
+    throw new FetchDataError();
   }
 
   return res.json();
@@ -16,9 +17,9 @@ async function getData() {
 
 export default async function Home() {
   const data = await getData();
-  console.log(data);
+ 
   return (
-    <div className="minh-[85vh] flex-col flex items-center ">
+    <div className="min-h-[85vh] flex-col flex items-center ">
       {data.map((d) => {
         return <CategoryCard key={d.id} event={d} />;
       })}
