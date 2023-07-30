@@ -1,5 +1,8 @@
 import EventCard from '@/components/eventCard';
 import { FetchDataError } from '@/app/lib/exceptions';
+import { notFound } from 'next/navigation';
+
+export const dynamicParams = false// true | false,
 
 
 async function getData(category) {
@@ -9,9 +12,10 @@ async function getData(category) {
     cache: 'no-store',
   });
 
-  if (!res.ok) {
+  if (!res) {
     // This will activate the closest `error.js` Error Boundary
     throw new FetchDataError();
+  
   }
 
   return res.json();
@@ -29,4 +33,17 @@ export default async function CategoryPage({ params }) {
       })}
     </div>
   );
+}
+
+export async function generateStaticParams() {
+  const posts = await fetch('http://localhost:3000/api/events/categories').then(
+    (res) => res.json()
+  );
+
+  const staticParams = posts.map((post) => ({
+    category: post.id,
+  }));
+ 
+
+  return staticParams;
 }

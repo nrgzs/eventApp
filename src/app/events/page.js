@@ -2,6 +2,7 @@ import EventCard from '@/components/eventCard';
 import { FetchDataError } from '../lib/exceptions';
 
 
+
 async function getData() {
   const res = await fetch('http://localhost:3000/api/events/allevents', {
     cache: 'no-store',
@@ -15,6 +16,8 @@ async function getData() {
 
   return res.json();
 }
+
+
 
 export default async function EventsPage() {
   const data = await getData();
